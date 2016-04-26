@@ -15,7 +15,7 @@ $message= "Bonjour Happy Dev,
 
 ".$_POST["name"]." cherche à vous contacter.
 
-Lors de sa demande il : ".$_POST["howru"]."
+Lors de sa demande il allait : ".$_POST["howru"]."
 
 Sujet de la demande:
 
