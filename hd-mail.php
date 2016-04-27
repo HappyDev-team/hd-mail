@@ -1,4 +1,7 @@
 <?php
+
+header("Access-Control-Allow-Origin: preview.happy-dev.fr");
+header("Access-Control-Allow-Methods: POST");
 /**
  * Plugin Name: HD MAIL
  * Description: This is a test for sending via ajax and wordpress wp-mail for the Happy-Dev website.
