@@ -1,6 +1,6 @@
 <?php
 
-header("Access-Control-Allow-Origin: preview.happy-dev.fr");
+header("Access-Control-Allow-Origin: http://preview.happy-dev.fr");
 header("Access-Control-Allow-Methods: POST");
 /**
  * Plugin Name: HD MAIL
