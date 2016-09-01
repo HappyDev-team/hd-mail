@@ -39,7 +39,7 @@ Bonne journée!";
          * Send a ping to Slack with the message
          */
         if (function_exists('slack')) {
-            slack($message);
+            slack('@channel' . $message);
         }
 
 		echo res;
@@ -69,7 +69,7 @@ function slack($message, $room = "smile", $icon = ":simple_smile:") {
 
     $room = ($room) ? $room : "email";
     $data = "payload=" . json_encode(array(
-            "username"      => "smile@happy-dev.fr",
+            "username"      => "Website",
             "channel"       =>  "#{$room}",
             "text"          =>  $message,
             "icon_emoji"    =>  $icon
