@@ -2,8 +2,8 @@
 
 $http_origin = $_SERVER['HTTP_ORIGIN'];
 
-if ($http_origin == "http://preview.happy-dev.fr" || $http_origin == "http://www.happy-dev.fr")
-{  
+if ($http_origin == "http://preview.happy-dev.fr" || $http_origin == "http://www.happy-dev.fr" || $http_origin == "http://happy-dev.fr")
+{
     header("Access-Control-Allow-Origin: $http_origin");
 }
 header("Access-Control-Allow-Methods: POST");
