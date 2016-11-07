@@ -39,7 +39,7 @@ Bonne journée!";
          * Send a ping to Slack with the message
          */
         if (function_exists('slack')) {
-            slack('@channel ' . $message);
+            slack('<!channel> ' . $message);
         }
 
 		echo res;
