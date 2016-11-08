@@ -29,7 +29,7 @@ Sujet de la demande:
 
 ".$_POST["request"]."
 
-Vous pourrez le joindre de cette manière : ".$_POST["contact"]."
+Vous pourrez joindre ".$_POST["name"]." de cette manière : ".$_POST["contact"]."
 
 Bonne journée!";
 
