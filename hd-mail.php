@@ -38,7 +38,7 @@ Bonne journée!";
         /**
          * Send a ping to the favorite chat app with the message
          */
-        if (defined('CHAT_APP') && 'CHAT_APP' == 'ROCKET_CHAT' && function_exists('rocketChat') ) {
+        if (defined('CHAT_APP') && CHAT_APP == 'ROCKET_CHAT' && function_exists('rocketChat') ) {
             rocketChat('@all ' . $message);
         } else if (function_exists('slack')) {
             slack('<!channel> ' . $message);
