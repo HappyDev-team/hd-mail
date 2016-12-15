@@ -36,9 +36,11 @@ Bonne journée!";
 		 //$res = wp_mail($_POST["mails"],$_POST["name"]." cherche à vous contacter",$message);
 
         /**
-         * Send a ping to Slack with the message
+         * Send a ping to the favorite chat app with the message
          */
-        if (function_exists('slack')) {
+        if (defined('CHAT_APP') && 'CHAT_APP' == 'ROCKET_CHAT' && function_exists('rocketChat') ) {
+            rocketChat('@all ' . $message);
+        } else if (function_exists('slack')) {
             slack('<!channel> ' . $message);
         }
 
@@ -77,6 +79,30 @@ function slack($message, $room = "smile", $icon = ":simple_smile:") {
 
     // You can get your webhook endpoint from your Slack settings
     $ch = curl_init(SLACK_WEBHOOK);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    return $result;
+}
+
+function rocketChat($message) {
+    if (!function_exists('curl_init')) {
+        error_log('php-curl missing');
+        return;
+    }
+
+    if (!defined('ROCKETCHAT_WEBHOOK')) {
+        error_log('ROCKETCHAT_WEBHOOK must be defined in wp-config.php');
+        return;
+    }
+
+    $data = "payload=" . json_encode(array("text" =>  $message ));
+
+    // You can get your webhook endpoint from your Slack settings
+    $ch = curl_init(ROCKETCHAT_WEBHOOK);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
